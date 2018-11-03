@@ -26,5 +26,6 @@ extension City {
     @NSManaged public var minTemp: Float
     @NSManaged public var conditions: String?
     @NSManaged public var lastUpdate: NSDate?
+    @NSManaged public var units: String?
 
 }

@@ -31,12 +31,53 @@ struct WeatherData {
     
     init(json: [String: Any]) {
         
-        temperature = json[JSONKeys.temp] as? Float
-        pressure = json[JSONKeys.pressure] as? Double
-        humidity = json[JSONKeys.humidity] as? Double
-        minimumTemperature = json[JSONKeys.temp_min] as? Float
-        maxiumTemperature = json[JSONKeys.temp_max] as? Float
-        seaLevelPressure = json[JSONKeys.sea_level] as? Double
-        groundLevelPressure = json[JSONKeys.grnd_level] as? Double
+        if let _temp = json[JSONKeys.temp] as? Float {
+            temperature = _temp
+        }
+        else {
+            temperature = -MAXFLOAT
+        }
+        
+        if let _pressure = json[JSONKeys.pressure] as? Double {
+            pressure = _pressure
+        }
+        else {
+            pressure = Double(-MAXFLOAT)
+        }
+        
+        if let _humidity = json[JSONKeys.humidity] as? Double {
+            humidity = _humidity
+        }
+        else {
+            humidity = Double(-MAXFLOAT)
+        }
+        
+        if let _mintemp = json[JSONKeys.temp_min] as? Float {
+            minimumTemperature = _mintemp
+        }
+        else {
+            minimumTemperature = -MAXFLOAT
+        }
+        
+        if let _maxtemp = json[JSONKeys.temp_max] as? Float {
+            maxiumTemperature = _maxtemp
+        }
+        else {
+            maxiumTemperature = -MAXFLOAT
+        }
+        
+        if let _pressure = json[JSONKeys.sea_level] as? Double {
+            seaLevelPressure = _pressure
+        }
+        else {
+            seaLevelPressure = Double(-MAXFLOAT)
+        }
+        
+        if let _pressure = json[JSONKeys.grnd_level] as? Double {
+            groundLevelPressure = _pressure
+        }
+        else {
+            groundLevelPressure = Double(-MAXFLOAT)
+        }
     }
 }

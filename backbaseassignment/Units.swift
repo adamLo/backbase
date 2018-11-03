@@ -11,4 +11,14 @@ import Foundation
 enum Units: String {
     
     case metric, imperial
+    
+    var temperatureUnit: String {
+        
+        if self == .imperial {
+            
+            return "℉"
+        }
+        
+        return "℃ "
+    }
 }
