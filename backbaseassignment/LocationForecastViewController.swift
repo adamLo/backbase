@@ -12,7 +12,26 @@ class LocationForecastViewController: UIViewController, UICollectionViewDelegate
 
     @IBOutlet weak var forecastCollectionView: UICollectionView!
     
-    var forecasts: [WeatherForecastItem]?
+    var forecasts: [WeatherForecastItem]? {
+        
+        didSet {
+            
+            if isViewLoaded {
+                
+                forecastCollectionView.reloadData()
+            }
+        }
+    }
+    
+    // MARK: - Controller Lifecycle
+    
+    static func controller(forecasts: [WeatherForecastItem]) -> LocationForecastViewController {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "LocationForecastViewController") as! LocationForecastViewController
+        controller.forecasts = forecasts
+        return controller
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +40,7 @@ class LocationForecastViewController: UIViewController, UICollectionViewDelegate
     }
     
     // MARK: - CollectionView
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return forecasts != nil ? 1 : 0
@@ -55,7 +75,7 @@ class LocationForecastViewController: UIViewController, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        return 0
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

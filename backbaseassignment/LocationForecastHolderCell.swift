@@ -16,5 +16,16 @@ class LocationForecastHolderCell: UITableViewCell {
 
     func setup(with forecasts: [WeatherForecastItem]) {
         
+        if forecastViewController == nil {
+            
+            forecastViewController = LocationForecastViewController.controller(forecasts: forecasts)
+            forecastViewController!.view.frame = CGRect(x: 0, y: 0, width: contentView.bounds.size.width, height: contentView.bounds.size.height)
+            forecastViewController!.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            contentView.addSubview(forecastViewController!.view)
+        }
+        else {
+            
+            forecastViewController?.forecasts = forecasts
+        }
     }
 }
