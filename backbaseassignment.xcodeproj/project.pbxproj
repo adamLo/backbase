@@ -7,23 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19139EAA218D998100BBD6BD /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139EA9218D998100BBD6BD /* AddLocationViewController.swift */; };
 		19DE57EA218D946D003268F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE57E9218D946D003268F0 /* AppDelegate.swift */; };
-		19DE57EC218D946D003268F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE57EB218D946D003268F0 /* ViewController.swift */; };
 		19DE57EF218D946D003268F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19DE57ED218D946D003268F0 /* Main.storyboard */; };
 		19DE57F2218D946D003268F0 /* backbaseassignment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 19DE57F0218D946D003268F0 /* backbaseassignment.xcdatamodeld */; };
 		19DE57F4218D9470003268F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19DE57F3218D9470003268F0 /* Assets.xcassets */; };
 		19DE57F7218D9470003268F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19DE57F5218D9470003268F0 /* LaunchScreen.storyboard */; };
+		19DE5804218D95E3003268F0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE5803218D95E3003268F0 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19139EA9218D998100BBD6BD /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		19DE57E6218D946D003268F0 /* backbaseassignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = backbaseassignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19DE57E9218D946D003268F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		19DE57EB218D946D003268F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		19DE57EE218D946D003268F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		19DE57F1218D946D003268F0 /* backbaseassignment.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = backbaseassignment.xcdatamodel; sourceTree = "<group>"; };
 		19DE57F3218D9470003268F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19DE57F6218D9470003268F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19DE57F8218D9470003268F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19DE5803218D95E3003268F0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19139EA8218D995600BBD6BD /* AddLocation */ = {
+			isa = PBXGroup;
+			children = (
+				19139EA9218D998100BBD6BD /* AddLocationViewController.swift */,
+			);
+			name = AddLocation;
+			sourceTree = "<group>";
+		};
 		19DE57DD218D946D003268F0 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +66,56 @@
 		19DE57E8218D946D003268F0 /* backbaseassignment */ = {
 			isa = PBXGroup;
 			children = (
-				19DE57E9218D946D003268F0 /* AppDelegate.swift */,
-				19DE57EB218D946D003268F0 /* ViewController.swift */,
-				19DE57ED218D946D003268F0 /* Main.storyboard */,
-				19DE57F3218D9470003268F0 /* Assets.xcassets */,
-				19DE57F5218D9470003268F0 /* LaunchScreen.storyboard */,
-				19DE57F8218D9470003268F0 /* Info.plist */,
-				19DE57F0218D946D003268F0 /* backbaseassignment.xcdatamodeld */,
+				19DE5801218D9501003268F0 /* App */,
+				19DE5800218D94F7003268F0 /* Assets */,
+				19DE57FF218D94DE003268F0 /* Persistence */,
+				19DE57FE218D94C0003268F0 /* UI */,
 			);
 			path = backbaseassignment;
+			sourceTree = "<group>";
+		};
+		19DE57FE218D94C0003268F0 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				19DE5802218D95C6003268F0 /* Main */,
+				19139EA8218D995600BBD6BD /* AddLocation */,
+				19DE57ED218D946D003268F0 /* Main.storyboard */,
+				19DE57F5218D9470003268F0 /* LaunchScreen.storyboard */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		19DE57FF218D94DE003268F0 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				19DE57F0218D946D003268F0 /* backbaseassignment.xcdatamodeld */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		19DE5800218D94F7003268F0 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				19DE57F3218D9470003268F0 /* Assets.xcassets */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		19DE5801218D9501003268F0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				19DE57E9218D946D003268F0 /* AppDelegate.swift */,
+				19DE57F8218D9470003268F0 /* Info.plist */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		19DE5802218D95C6003268F0 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				19DE5803218D95E3003268F0 /* MainViewController.swift */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +189,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19DE5804218D95E3003268F0 /* MainViewController.swift in Sources */,
 				19DE57F2218D946D003268F0 /* backbaseassignment.xcdatamodeld in Sources */,
-				19DE57EC218D946D003268F0 /* ViewController.swift in Sources */,
 				19DE57EA218D946D003268F0 /* AppDelegate.swift in Sources */,
+				19139EAA218D998100BBD6BD /* AddLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +339,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X37H2S679C;
 				INFOPLIST_FILE = backbaseassignment/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,7 +358,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X37H2S679C;
 				INFOPLIST_FILE = backbaseassignment/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
