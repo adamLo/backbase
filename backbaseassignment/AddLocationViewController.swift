@@ -71,6 +71,7 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
                 UIView.animate(withDuration: animationDuration, animations: {
                     
                     self.activityHolderView.alpha = 0.0
+                    
                 }, completion: completion)
             }
             else {
@@ -97,10 +98,21 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
         let alert = UIAlertController(title: NSLocalizedString("Found a location!", comment: "Alert dialog title when found a location"), message: result.displayName, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Select", comment: "Select action title"), style: .default, handler: { (action) in
             
+            self.save(weather: result, completion: { (success, error) in
+                
+                if success {
+                    
+                    self.navigationController?.popViewController(animated: true)
+                }
+                else {
+                    
+                    let alert = UIAlertController(title: nil, message: error?.localizedDescription ?? NSLocalizedString("Error saving location", comment: "Error message when saving location"), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            })
         }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button title"), style: .cancel, handler: { (action) in
-            
-        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button title"), style: .cancel, handler: nil))
         
         present(alert, animated: true, completion: nil)
     }
@@ -127,12 +139,40 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
             
             if let _item = item {
                 
-                print("item: \(_item)")
                 _self.display(result: _item)
             }
             else {
                 
                 _self.displayNoResult(error: error?.localizedDescription)
+            }
+        }
+    }
+    
+    private func save(weather: WeatherQueryItem, completion: ((_ success: Bool, _ error: Error?) -> ())?) {
+        
+        let context = Persistence.shared.createNewManagedObjectContext()
+        
+        context.perform {
+
+            if let _ = City.newCity(in: context, from: weather) {
+                
+                do {
+                    
+                    try context.save()
+                    
+                    DispatchQueue.main.async {
+                        
+                        completion?(true, nil)
+                    }
+                    
+                }
+                catch let error {
+                    
+                    DispatchQueue.main.async {
+                    
+                        completion?(false, error)
+                    }
+                }
             }
         }
     }

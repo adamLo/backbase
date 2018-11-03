@@ -52,15 +52,34 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 0
+        if let count = citiesFetchedResultsController?.fetchedObjects?.count, count > 0 {
+            
+            return 1
+        }
+        return  0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if let count = citiesFetchedResultsController?.fetchedObjects?.count, count > 0 {
+            
+            return count
+        }
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: CityCell.reuseId, for: indexPath) as? CityCell {
+            
+            if let cities = citiesFetchedResultsController?.fetchedObjects as? [City], indexPath.row < cities.count {
+                
+                let city = cities[indexPath.row]
+                cell.setup(with: city)
+            }
+            
+            return cell
+        }
         
         return UITableViewCell()
     }
@@ -78,6 +97,31 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        if let cities = citiesFetchedResultsController?.fetchedObjects as? [City], indexPath.row < cities.count {
+            
+            return true
+        }
+        
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        if let cities = citiesFetchedResultsController?.fetchedObjects as? [City], indexPath.row < cities.count {
+
+            let deleteAction = UITableViewRowAction(style: .destructive, title: NSLocalizedString("Delete", comment: "Delete city action title"), handler: { (action, indexPath) in
+                
+                self.deleteCity(at: indexPath)
+            })
+            
+            return [deleteAction]
+        }
+        
+        return nil
     }
 
     // MARK: - Navigation
@@ -194,6 +238,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    // MARK: - Data integration
+    
     private func loadCities() {
         
         do  {
@@ -205,6 +251,26 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         catch let error {
             
             print("Error perfoming fetch: \(error)")
+        }
+    }
+    
+    private func deleteCity(at indexPath: IndexPath) {
+        
+        if let controller = citiesFetchedResultsController, let cities = controller.fetchedObjects as? [City], indexPath.row < cities.count {
+            
+            do {
+            
+                let context = controller.managedObjectContext
+                let city = cities[indexPath.row]
+                context.delete(city)
+                try context.save()
+            }
+            catch let error {
+
+                let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+                alert.addAction((UIAlertAction(title: NSLocalizedString("OK", comment: "OK Button title"), style: .default, handler: nil)))
+                present(alert, animated: true, completion: nil)
+            }
         }
     }
 }

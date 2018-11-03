@@ -12,7 +12,7 @@ struct WeatherOverView {
     
     let id: String?
     let main: String?
-    let wDescritption: String?
+    let wDescription: String?
     let iconId: String?
     
     private struct JSONKeys {
@@ -27,7 +27,7 @@ struct WeatherOverView {
         
         id = json[JSONKeys.id] as? String
         main = json[JSONKeys.main] as? String
-        wDescritption = json[JSONKeys.description] as? String
+        wDescription = json[JSONKeys.description] as? String
         iconId = json[JSONKeys.icon] as? String
     }
 }

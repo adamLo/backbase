@@ -41,13 +41,30 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="X2M-H8-SYv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cityCell" id="X2M-H8-SYv" customClass="CityCell" customModule="backbaseassignment" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X2M-H8-SYv" id="YjV-6Q-00d">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6L-Zw-aox">
+                                                    <rect key="frame" x="10" y="11.5" width="80" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="p6L-Zw-aox" firstAttribute="centerY" secondItem="YjV-6Q-00d" secondAttribute="centerY" id="0aT-c0-4LS"/>
+                                                <constraint firstItem="p6L-Zw-aox" firstAttribute="top" relation="greaterThanOrEqual" secondItem="YjV-6Q-00d" secondAttribute="top" id="94f-hx-cRF"/>
+                                                <constraint firstItem="p6L-Zw-aox" firstAttribute="leading" secondItem="YjV-6Q-00d" secondAttribute="leading" constant="10" id="T4l-Mb-3gr"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="p6L-Zw-aox" secondAttribute="bottom" id="ctt-zr-J1A"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="p6L-Zw-aox" id="cfB-2z-X6B"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
