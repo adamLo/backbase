@@ -123,7 +123,14 @@ struct WeatherQueryItem {
             clouds = nil
         }
         
-        cityId = json[JSONKeys.id] as? String
+        if let _id = json[JSONKeys.id] as? Int {
+        
+            cityId = "\(_id)"
+        }
+        else {
+            
+            cityId = nil
+        }
         
         if let _timestamp = json[JSONKeys.dt] as? TimeInterval {
             

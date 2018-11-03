@@ -27,7 +27,13 @@ struct WeatherSystem {
     
     init(json: [String: Any]) {
         
-        id = json[JSONKeys.id] as? String
+        if let _id = json[JSONKeys.id] as? Int {
+            id = "\(_id)"
+        }
+        else {
+            id = nil
+        }
+        
         message = json[JSONKeys.message] as? String
         countryCode = json[JSONKeys.country] as? String
         

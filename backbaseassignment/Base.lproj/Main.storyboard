@@ -147,11 +147,30 @@
                     <connections>
                         <outlet property="addButton" destination="EPm-Zj-8Zc" id="qG0-BR-z1z"/>
                         <outlet property="bookmarksTableView" destination="Vq8-G1-ZO3" id="apj-HJ-gP2"/>
+                        <segue destination="xsy-Yl-bob" kind="show" identifier="cityDetail" id="IEr-1n-wXE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="77.599999999999994" y="97.601199400299862"/>
+        </scene>
+        <!--City Detail View Controller-->
+        <scene sceneID="NVe-Lf-dKU">
+            <objects>
+                <viewController id="xsy-Yl-bob" customClass="CityDetailViewController" customModule="backbaseassignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d9W-9f-Qbx"/>
+                        <viewControllerLayoutGuide type="bottom" id="dtG-EI-Wie"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xsu-6J-kg8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pDN-KA-c1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="932" y="340"/>
         </scene>
         <!--Add Location View Controller-->
         <scene sceneID="gYg-N5-l6b">
@@ -251,7 +270,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="896.79999999999995" y="97.601199400299862"/>
+            <point key="canvasLocation" x="932" y="-346"/>
         </scene>
     </scenes>
 </document>

@@ -16,7 +16,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     private struct Segue {
         
-        static let addLocation = "addLocation"
+        static let addLocation  = "addLocation"
+        static let cityDetail   = "cityDetail"
     }
     
     private var citiesFetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
@@ -97,6 +98,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: false)
+        
+        if let cities = citiesFetchedResultsController?.fetchedObjects as? [City], indexPath.row < cities.count {
+            
+            let city = cities[indexPath.row]
+            performSegue(withIdentifier: Segue.cityDetail, sender: city)
+        }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -128,9 +135,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == Segue.addLocation, let destination = segue.destination as? AddLocationViewController {
+        if segue.identifier == Segue.cityDetail, let destination = segue.destination as? CityDetailViewController, let city = sender as? City {
             
-            // TODO: Add callback here
+            destination.city = city
         }
     }
 

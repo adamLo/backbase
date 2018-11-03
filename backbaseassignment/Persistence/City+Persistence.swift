@@ -21,6 +21,24 @@ extension City {
         return Units(rawValue: units ?? "N/A") ?? Units.metric
     }
     
+    var displayName: String {
+        
+        if let _name = name {
+            
+            return _name
+        }
+        else if latitude != 0.0 && longitude != 0.0 {
+            
+            return "(lat: \(latitude), lon: \(longitude))"
+        }
+        else if let _id = id {
+            
+            return "(id: \(_id))"
+        }
+        
+        return "N/A"
+    }
+    
     class func newCity(in context: NSManagedObjectContext, from weather: WeatherQueryItem? = nil) -> City? {
         
         if let cityDecription = NSEntityDescription.entity(forEntityName: entityName, in: context) {
@@ -41,6 +59,13 @@ extension City {
     func update(with weather: WeatherQueryItem) {
         
         name = weather.displayName
+        id = weather.cityId
+        
+        if let coords = weather.coordinates {
+            
+            latitude = coords.latitude
+            longitude = coords.longitude
+        }
         
         if let temp = weather.main?.temperature {
             currentTemp = temp
