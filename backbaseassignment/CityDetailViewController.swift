@@ -14,10 +14,11 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var city: City?
     private var weather: WeatherQueryItem?
+    private var forecasts: [WeatherForecastItem]?
     
     private enum CellType: Int {
         
-        case overview = 0, temperatureAndWind, precipation
+        case overview = 0, temperatureAndWind, precipation, forecast
     }
     private var cellTypes = [CellType]()
 
@@ -37,6 +38,7 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewWillAppear(animated)
         
         updateData()
+        fetchForecast()
     }
     
     // MARK: - UI Customization
@@ -66,11 +68,19 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         cellTypes.removeAll()
         if let _ = city {
+            
             cellTypes.append(.overview)
-        }
-        if let _ = weather {
-            cellTypes.append(.temperatureAndWind)
-            cellTypes.append(.precipation)
+            
+            if let _ = weather {
+                
+                cellTypes.append(.temperatureAndWind)
+                cellTypes.append(.precipation)
+            }
+            
+            if let _forecast = forecasts, !_forecast.isEmpty {
+                
+                cellTypes.append(.forecast)
+            }
         }
         
         detailTableView.reloadData()
@@ -120,6 +130,27 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    private func fetchForecast() {
+        
+        if let _city = city {
+
+            OpenWeatherMap.shared.fetchForecast(for: _city) {[weak self] (forecast, error) in
+                
+                guard let _self = self else {return}
+
+                if let _forecast = forecast {
+                
+                    _self.forecasts = _forecast
+                    _self.distributeData()
+                }
+                else {
+                    
+                    _self.show(message: error?.localizedDescription ?? NSLocalizedString("Error fetching foreast", comment: "Error message when unable to fetch forecasts"))
+                }
+            }
+        }
+    }
+    
     // MARK: - TableView
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -155,6 +186,13 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             if let _weather = weather, let cell = tableView.dequeueReusableCell(withIdentifier: LocationPrecipationCell.reuseId, for: indexPath) as? LocationPrecipationCell {
                 
                 cell.setup(with: _weather)
+                return cell
+            }
+            
+        case .forecast:
+            if let _forecast = forecasts, let cell = tableView.dequeueReusableCell(withIdentifier: LocationForecastHolderCell.reuseId, for: indexPath) as? LocationForecastHolderCell {
+                
+                cell.setup(with: _forecast)
                 return cell
             }
         }

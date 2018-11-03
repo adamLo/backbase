@@ -268,6 +268,14 @@
                                             <outlet property="dataLabel" destination="xdo-qF-QiJ" id="3xB-Fr-pXu"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="forecastHolderCell" id="7Z2-Zl-Jp1" customClass="LocationForecastHolderCell" customModule="backbaseassignment" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="266" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Z2-Zl-Jp1" id="XBZ-p6-gqY">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="xsy-Yl-bob" id="3tU-85-QmZ"/>

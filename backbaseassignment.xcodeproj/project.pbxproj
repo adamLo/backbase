@@ -28,6 +28,8 @@
 		19139ED9218E3B0900BBD6BD /* ErrorDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139ED8218E3B0900BBD6BD /* ErrorDialog.swift */; };
 		19139EDD218E436400BBD6BD /* LocationTemperatureAndWindCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139EDC218E436300BBD6BD /* LocationTemperatureAndWindCell.swift */; };
 		19139EDF218E47EA00BBD6BD /* LocationPrecipationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139EDE218E47EA00BBD6BD /* LocationPrecipationCell.swift */; };
+		19139EE1218E4B2200BBD6BD /* WeatherForecastItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139EE0218E4B2200BBD6BD /* WeatherForecastItem.swift */; };
+		19139EE3218E4EF900BBD6BD /* LocationForecastHolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139EE2218E4EF900BBD6BD /* LocationForecastHolderCell.swift */; };
 		19DE57EA218D946D003268F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE57E9218D946D003268F0 /* AppDelegate.swift */; };
 		19DE57EF218D946D003268F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19DE57ED218D946D003268F0 /* Main.storyboard */; };
 		19DE57F2218D946D003268F0 /* backbaseassignment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 19DE57F0218D946D003268F0 /* backbaseassignment.xcdatamodeld */; };
@@ -58,6 +60,8 @@
 		19139ED8218E3B0900BBD6BD /* ErrorDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDialog.swift; sourceTree = "<group>"; };
 		19139EDC218E436300BBD6BD /* LocationTemperatureAndWindCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTemperatureAndWindCell.swift; sourceTree = "<group>"; };
 		19139EDE218E47EA00BBD6BD /* LocationPrecipationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPrecipationCell.swift; sourceTree = "<group>"; };
+		19139EE0218E4B2200BBD6BD /* WeatherForecastItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastItem.swift; sourceTree = "<group>"; };
+		19139EE2218E4EF900BBD6BD /* LocationForecastHolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationForecastHolderCell.swift; sourceTree = "<group>"; };
 		19DE57E6218D946D003268F0 /* backbaseassignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = backbaseassignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19DE57E9218D946D003268F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19DE57EE218D946D003268F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 				19139EBF218DB6E900BBD6BD /* WeatherPrecipation.swift */,
 				19139EC1218DB7BE00BBD6BD /* WeatherSystem.swift */,
 				19139EC3218DBA5800BBD6BD /* Units.swift */,
+				19139EE0218E4B2200BBD6BD /* WeatherForecastItem.swift */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 				19139ED5218E19D000BBD6BD /* LocationOverviewCell.swift */,
 				19139EDC218E436300BBD6BD /* LocationTemperatureAndWindCell.swift */,
 				19139EDE218E47EA00BBD6BD /* LocationPrecipationCell.swift */,
+				19139EE2218E4EF900BBD6BD /* LocationForecastHolderCell.swift */,
 			);
 			name = "City Detail";
 			sourceTree = "<group>";
@@ -305,6 +311,7 @@
 				19139ED4218E036C00BBD6BD /* CityDetailViewController.swift in Sources */,
 				19139EC0218DB6E900BBD6BD /* WeatherPrecipation.swift in Sources */,
 				19139EC4218DBA5800BBD6BD /* Units.swift in Sources */,
+				19139EE3218E4EF900BBD6BD /* LocationForecastHolderCell.swift in Sources */,
 				19139EB1218DA3D800BBD6BD /* URLRequest.swift in Sources */,
 				19139ECF218DBE4D00BBD6BD /* City+Persistence.swift in Sources */,
 				19139EC2218DB7BE00BBD6BD /* WeatherSystem.swift in Sources */,
@@ -319,6 +326,7 @@
 				19DE57EA218D946D003268F0 /* AppDelegate.swift in Sources */,
 				19139EBC218DB50600BBD6BD /* WeatherClouds.swift in Sources */,
 				19139ED6218E19D000BBD6BD /* LocationOverviewCell.swift in Sources */,
+				19139EE1218E4B2200BBD6BD /* WeatherForecastItem.swift in Sources */,
 				19139EAA218D998100BBD6BD /* AddLocationViewController.swift in Sources */,
 				19139EDF218E47EA00BBD6BD /* LocationPrecipationCell.swift in Sources */,
 			);

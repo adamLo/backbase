@@ -27,6 +27,12 @@ class OpenWeatherMap {
         static let lon      = "lon"
         static let units    = "units"
         static let id       = "id"
+        static let forecast = "forecast"
+    }
+    
+    private struct JSONKeys {
+        
+        static let list     = "list"
     }
     
     private lazy var defaultSession = URLSession(configuration: URLSessionConfiguration.default)
@@ -225,4 +231,54 @@ class OpenWeatherMap {
         }
     }
     
+    func fetchForecast(for city: City, unit: Units = .metric, completion: ((_ list: [WeatherForecastItem]?, _ error: Error?) -> ())?) {
+        
+        var queryItems = [
+            URLQueryItem(name: Configuration.appid, value: Configuration.apiKey),
+            URLQueryItem(name: Configuration.units, value: unit.rawValue)
+        ]
+        
+        if let id = city.id, !id.isEmpty {
+            
+            queryItems.append(URLQueryItem(name: Configuration.id, value: id))
+        }
+        else if city.latitude != 0.0 && city.longitude != 0.0 {
+            
+            queryItems.append(URLQueryItem(name: Configuration.lat, value: "\(city.latitude)"))
+            queryItems.append(URLQueryItem(name: Configuration.lon, value: "\(city.longitude)"))
+        }
+        else {
+            
+            completion?(nil, nil)
+            return
+        }
+        
+        var urlComponents = URLComponents(url: Configuration.baseURL.appendingPathComponent(Configuration.forecast), resolvingAgainstBaseURL: false)!
+        urlComponents.queryItems = queryItems
+        
+        let url = urlComponents.url!
+        
+        get(from: url) { (result, error) in
+            
+            if let _result = result, let _list = _result[JSONKeys.list] as? [[String: Any]] {
+                
+                var list = [WeatherForecastItem]()
+                for _item in _list {
+                    
+                    let item = WeatherForecastItem(json: _item, units: unit)
+                    list.append(item)
+                }
+                
+                DispatchQueue.main.async {
+                    completion?(list.isEmpty ? nil : list, nil)
+                }
+            }
+            else {
+                
+                DispatchQueue.main.async {
+                    completion?(nil, error)
+                }
+            }
+        }
+    }
 }
