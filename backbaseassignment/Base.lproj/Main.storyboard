@@ -91,12 +91,94 @@
                     <view key="view" contentMode="scaleToFill" id="so2-9S-MWM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIE-0t-k99">
+                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K76-ur-qgy">
+                                        <rect key="frame" x="10" y="5" width="304" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pC-qw-ASZ">
+                                        <rect key="frame" x="319" y="5" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="K76-ur-qgy" firstAttribute="leading" secondItem="TIE-0t-k99" secondAttribute="leading" constant="10" id="Cba-WR-VeI"/>
+                                    <constraint firstAttribute="trailing" secondItem="2pC-qw-ASZ" secondAttribute="trailing" constant="10" id="EGN-Ob-4pa"/>
+                                    <constraint firstItem="K76-ur-qgy" firstAttribute="top" secondItem="TIE-0t-k99" secondAttribute="top" constant="5" id="NSy-HV-GB1"/>
+                                    <constraint firstAttribute="bottom" secondItem="K76-ur-qgy" secondAttribute="bottom" constant="5" id="VP4-ZM-sHF"/>
+                                    <constraint firstItem="2pC-qw-ASZ" firstAttribute="leading" secondItem="K76-ur-qgy" secondAttribute="trailing" constant="5" id="WT4-cX-jvT"/>
+                                    <constraint firstItem="2pC-qw-ASZ" firstAttribute="centerY" secondItem="TIE-0t-k99" secondAttribute="centerY" id="kmm-Xm-bJT"/>
+                                </constraints>
+                            </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ort-Ee-YZX">
+                                <rect key="frame" x="0.0" y="104" width="375" height="563"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="delegate" destination="i5f-89-pvA" id="iE3-ZH-Zmf"/>
+                                    <outletCollection property="gestureRecognizers" destination="UHD-dB-fc0" appends="YES" id="Ota-dx-XdE"/>
+                                </connections>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kvz-QL-xjd">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0zZ-Z7-hz6">
+                                        <rect key="frame" x="169" y="283" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKU-Mn-g1y">
+                                        <rect key="frame" x="149" y="325" width="77" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.19622217465753425" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="0zZ-Z7-hz6" firstAttribute="centerY" secondItem="Kvz-QL-xjd" secondAttribute="centerY" id="0kK-mG-eF1"/>
+                                    <constraint firstItem="bKU-Mn-g1y" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Kvz-QL-xjd" secondAttribute="leading" constant="10" id="1jP-ga-izG"/>
+                                    <constraint firstItem="0zZ-Z7-hz6" firstAttribute="centerX" secondItem="Kvz-QL-xjd" secondAttribute="centerX" id="2am-L2-ZGh"/>
+                                    <constraint firstItem="bKU-Mn-g1y" firstAttribute="top" secondItem="0zZ-Z7-hz6" secondAttribute="bottom" constant="5" id="3Sy-vh-0Mt"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bKU-Mn-g1y" secondAttribute="trailing" constant="10" id="D4s-zR-I0D"/>
+                                    <constraint firstItem="bKU-Mn-g1y" firstAttribute="centerX" secondItem="0zZ-Z7-hz6" secondAttribute="centerX" id="VgQ-9V-vOj"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bKU-Mn-g1y" secondAttribute="bottom" constant="10" id="toH-QL-dJn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ort-Ee-YZX" firstAttribute="top" secondItem="TIE-0t-k99" secondAttribute="bottom" id="GaK-pF-4pc"/>
+                            <constraint firstAttribute="trailing" secondItem="Kvz-QL-xjd" secondAttribute="trailing" id="Kpx-q3-95C"/>
+                            <constraint firstItem="Kvz-QL-xjd" firstAttribute="leading" secondItem="so2-9S-MWM" secondAttribute="leading" id="Q56-jc-PVL"/>
+                            <constraint firstAttribute="trailing" secondItem="TIE-0t-k99" secondAttribute="trailing" id="U1E-Ho-Wtm"/>
+                            <constraint firstItem="Kvz-QL-xjd" firstAttribute="top" secondItem="Ivt-Js-BO6" secondAttribute="bottom" id="aWq-qa-qW0"/>
+                            <constraint firstItem="TIE-0t-k99" firstAttribute="top" secondItem="Ivt-Js-BO6" secondAttribute="bottom" id="aXj-7e-AaD"/>
+                            <constraint firstAttribute="trailing" secondItem="Ort-Ee-YZX" secondAttribute="trailing" id="dsz-RR-saY"/>
+                            <constraint firstItem="9Bv-4M-WRb" firstAttribute="top" secondItem="Kvz-QL-xjd" secondAttribute="bottom" id="eio-8g-mu2"/>
+                            <constraint firstItem="TIE-0t-k99" firstAttribute="leading" secondItem="so2-9S-MWM" secondAttribute="leading" id="l6D-Xv-nIh"/>
+                            <constraint firstItem="Ort-Ee-YZX" firstAttribute="leading" secondItem="so2-9S-MWM" secondAttribute="leading" id="rip-6I-WKz"/>
+                            <constraint firstItem="9Bv-4M-WRb" firstAttribute="top" secondItem="Ort-Ee-YZX" secondAttribute="bottom" id="sdj-uc-STc"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityHolderView" destination="Kvz-QL-xjd" id="IZy-5e-EKM"/>
+                        <outlet property="activityIndicator" destination="0zZ-Z7-hz6" id="UUw-b3-d0k"/>
+                        <outlet property="activityLabel" destination="bKU-Mn-g1y" id="rNN-Iq-82T"/>
+                        <outlet property="mapView" destination="Ort-Ee-YZX" id="RbZ-aP-siK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ONS-Kq-poS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="UHD-dB-fc0" userLabel="Map Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="userTappedOnMap:" destination="i5f-89-pvA" id="qCp-Xc-yjl"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="898" y="98"/>
+            <point key="canvasLocation" x="896.79999999999995" y="97.601199400299862"/>
         </scene>
     </scenes>
 </document>

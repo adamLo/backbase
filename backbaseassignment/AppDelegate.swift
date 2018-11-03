@@ -95,5 +95,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
 
+    // MARK: - Network Indicator
+    
+    private var networkIndicatorCount = 0
+    
+    func showNetworkIndicator() {
+        
+        DispatchQueue.main.async {
+            
+            self.networkIndicatorCount += 1
+            
+            if self.networkIndicatorCount == 1 {
+                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            }
+        }
+    }
+    
+    func hideNetworkIndicator() {
+        
+        DispatchQueue.main.async {
+            
+            self.networkIndicatorCount -= 1
+            
+            if self.networkIndicatorCount <= 0 {
+                
+                self.networkIndicatorCount = 0
+                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
 }
 
