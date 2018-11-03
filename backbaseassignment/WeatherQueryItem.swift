@@ -11,9 +11,23 @@ import CoreLocation
 
 struct WeatherQueryItem {
     
+    let cityId: String?
     let coordinates: CLLocationCoordinate2D?
-    let weathers: [Weather]?
+    let weathers: [WeatherOverView]?
     let name: String?
+    let main: WeatherData?
+    
+    let windSpeed: Float?
+    let windDirection: Float?
+    
+    let clouds: WeatherClouds?
+    
+    let rain: WeatherPrecipation?
+    let snow: WeatherPrecipation?
+    
+    let time: Date
+    
+    let system: WeatherSystem?
     
     var displayName: String {
         
@@ -24,6 +38,10 @@ struct WeatherQueryItem {
         else if let _coords = coordinates {
             
             return "(lat: \(_coords.latitude), lon: \(_coords.longitude))"
+        }
+        else if let _id = cityId {
+            
+            return "(id: \(_id))"
         }
         
         return "N/A"
@@ -36,6 +54,16 @@ struct WeatherQueryItem {
         static let lon      = "lon"
         static let weather  = "weather"
         static let name     = "name"
+        static let main     = "main"
+        static let wind     = "wind"
+        static let deg      = "deg"
+        static let speed    = "speed"
+        static let clouds   = "clouds"
+        static let id       = "id"
+        static let dt       = "dt"
+        static let rain     = "rain"
+        static let snow     = "snow"
+        static let sys      = "sys"
     }
     
     init(json: [String: Any]) {
@@ -51,10 +79,10 @@ struct WeatherQueryItem {
         
         if let _weathers = json[JSONKeys.weather]as? [[String: Any]] {
             
-            var weathers = [Weather]()
+            var weathers = [WeatherOverView]()
             for _weather in _weathers {
                 
-                let weather = Weather(json: _weather)
+                let weather = WeatherOverView(json: _weather)
                 weathers.append(weather)
             }
             self.weathers = weathers
@@ -65,5 +93,72 @@ struct WeatherQueryItem {
         }
         
         name = json[JSONKeys.name] as? String
+        
+        if let _main = json[JSONKeys.main] as? [String: Any] {
+            
+            main = WeatherData(json: _main)
+        }
+        else {
+            
+            main = nil
+        }
+        
+        if let _wind = json[JSONKeys.wind] as? [String: Any], let _speed = _wind[JSONKeys.speed] as? Float, let _dir = _wind[JSONKeys.deg] as? Float {
+            
+            windSpeed = _speed
+            windDirection = _dir
+        }
+        else {
+            
+            windSpeed = nil
+            windDirection = nil
+        }
+        
+        if let _clouds = json[JSONKeys.clouds] as? [String: Any] {
+            
+            clouds = WeatherClouds(json: _clouds)
+        }
+        else {
+            
+            clouds = nil
+        }
+        
+        cityId = json[JSONKeys.id] as? String
+        
+        if let _timestamp = json[JSONKeys.dt] as? TimeInterval {
+            
+            time = Date(timeIntervalSince1970: _timestamp)
+        }
+        else {
+            
+            time = Date()
+        }
+        
+        if let _rain = json[JSONKeys.rain] as? [String: Any] {
+            
+            rain = WeatherPrecipation(json: _rain)
+        }
+        else {
+            
+            rain = nil
+        }
+        
+        if let _snow = json[JSONKeys.snow] as? [String: Any] {
+            
+            snow = WeatherPrecipation(json: _snow)
+        }
+        else {
+            
+            snow = nil
+        }
+        
+        if let _system = json[JSONKeys.sys] as? [String: Any] {
+            
+            system = WeatherSystem(json: _system)
+        }
+        else {
+            
+            system = nil
+        }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  Weather.swift
+//  WeatherOverView.swift
 //  backbaseassignment
 //
 //  Created by Adam Lovastyik on 03/11/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Weather {
+struct WeatherOverView {
     
     let id: String?
     let main: String?

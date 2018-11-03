@@ -127,6 +127,7 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
             
             if let _item = item {
                 
+                print("item: \(_item)")
                 _self.display(result: _item)
             }
             else {
