@@ -26,7 +26,6 @@ class OpenWeatherMap {
         static let lat      = "lat"
         static let lon      = "lon"
         static let units    = "units"
-        static let metric   = "metric"
     }
     
     private lazy var defaultSession = URLSession(configuration: URLSessionConfiguration.default)
@@ -123,12 +122,15 @@ class OpenWeatherMap {
         }
     }
     
-    func query(location: CLLocationCoordinate2D, completion: ((_ weather: WeatherQueryItem?, _ error: Error?) -> ())?) {
+    // MARK: - Public functions
+    
+    func query(location: CLLocationCoordinate2D, unit: Units = .metric, completion: ((_ weather: WeatherQueryItem?, _ error: Error?) -> ())?) {
         
         let queryItems = [
             URLQueryItem(name: Configuration.appid, value: Configuration.apiKey),
             URLQueryItem(name: Configuration.lat, value: "\(location.latitude)"),
-            URLQueryItem(name: Configuration.lon, value: "\(location.longitude)")
+            URLQueryItem(name: Configuration.lon, value: "\(location.longitude)"),
+            URLQueryItem(name: Configuration.units, value: unit.rawValue)
         ]
         
         var urlComponents = URLComponents(url: Configuration.baseURL.appendingPathComponent(Configuration.weather), resolvingAgainstBaseURL: false)!

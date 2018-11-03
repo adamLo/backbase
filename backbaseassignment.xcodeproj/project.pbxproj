@@ -17,6 +17,11 @@
 		19139EBC218DB50600BBD6BD /* WeatherClouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139EBB218DB50600BBD6BD /* WeatherClouds.swift */; };
 		19139EC0218DB6E900BBD6BD /* WeatherPrecipation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139EBF218DB6E900BBD6BD /* WeatherPrecipation.swift */; };
 		19139EC2218DB7BE00BBD6BD /* WeatherSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139EC1218DB7BE00BBD6BD /* WeatherSystem.swift */; };
+		19139EC4218DBA5800BBD6BD /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139EC3218DBA5800BBD6BD /* Units.swift */; };
+		19139EC6218DBB4900BBD6BD /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139EC5218DBB4900BBD6BD /* Persistence.swift */; };
+		19139ECA218DBCCA00BBD6BD /* City+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139EC8218DBCCA00BBD6BD /* City+CoreDataClass.swift */; };
+		19139ECB218DBCCA00BBD6BD /* City+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139EC9218DBCCA00BBD6BD /* City+CoreDataProperties.swift */; };
+		19139ECF218DBE4D00BBD6BD /* City+Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139ECE218DBE4D00BBD6BD /* City+Persistence.swift */; };
 		19DE57EA218D946D003268F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE57E9218D946D003268F0 /* AppDelegate.swift */; };
 		19DE57EF218D946D003268F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19DE57ED218D946D003268F0 /* Main.storyboard */; };
 		19DE57F2218D946D003268F0 /* backbaseassignment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 19DE57F0218D946D003268F0 /* backbaseassignment.xcdatamodeld */; };
@@ -36,6 +41,11 @@
 		19139EBB218DB50600BBD6BD /* WeatherClouds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherClouds.swift; sourceTree = "<group>"; };
 		19139EBF218DB6E900BBD6BD /* WeatherPrecipation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherPrecipation.swift; sourceTree = "<group>"; };
 		19139EC1218DB7BE00BBD6BD /* WeatherSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSystem.swift; sourceTree = "<group>"; };
+		19139EC3218DBA5800BBD6BD /* Units.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>"; };
+		19139EC5218DBB4900BBD6BD /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		19139EC8218DBCCA00BBD6BD /* City+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City+CoreDataClass.swift"; sourceTree = "<group>"; };
+		19139EC9218DBCCA00BBD6BD /* City+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		19139ECE218DBE4D00BBD6BD /* City+Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City+Persistence.swift"; sourceTree = "<group>"; };
 		19DE57E6218D946D003268F0 /* backbaseassignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = backbaseassignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19DE57E9218D946D003268F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19DE57EE218D946D003268F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,8 +94,26 @@
 				19139EBB218DB50600BBD6BD /* WeatherClouds.swift */,
 				19139EBF218DB6E900BBD6BD /* WeatherPrecipation.swift */,
 				19139EC1218DB7BE00BBD6BD /* WeatherSystem.swift */,
+				19139EC3218DBA5800BBD6BD /* Units.swift */,
 			);
 			name = DataModel;
+			sourceTree = "<group>";
+		};
+		19139EC7218DBCA700BBD6BD /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				19139EC8218DBCCA00BBD6BD /* City+CoreDataClass.swift */,
+				19139EC9218DBCCA00BBD6BD /* City+CoreDataProperties.swift */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		19139ECD218DBE3800BBD6BD /* Data Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				19139ECE218DBE4D00BBD6BD /* City+Persistence.swift */,
+			);
+			name = "Data Extensions";
 			sourceTree = "<group>";
 		};
 		19DE57DD218D946D003268F0 = {
@@ -131,7 +159,10 @@
 		19DE57FF218D94DE003268F0 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				19139ECD218DBE3800BBD6BD /* Data Extensions */,
+				19139EC7218DBCA700BBD6BD /* Classes */,
 				19DE57F0218D946D003268F0 /* backbaseassignment.xcdatamodeld */,
+				19139EC5218DBB4900BBD6BD /* Persistence.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -232,14 +263,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19139ECA218DBCCA00BBD6BD /* City+CoreDataClass.swift in Sources */,
 				19139EB4218DA83000BBD6BD /* WeatherQueryItem.swift in Sources */,
 				19139EAF218DA2A100BBD6BD /* HTTPStatusCode.swift in Sources */,
 				19139EC0218DB6E900BBD6BD /* WeatherPrecipation.swift in Sources */,
+				19139EC4218DBA5800BBD6BD /* Units.swift in Sources */,
 				19139EB1218DA3D800BBD6BD /* URLRequest.swift in Sources */,
+				19139ECF218DBE4D00BBD6BD /* City+Persistence.swift in Sources */,
 				19139EC2218DB7BE00BBD6BD /* WeatherSystem.swift in Sources */,
 				19139EAD218D9F8800BBD6BD /* OpenWeatherMap.swift in Sources */,
 				19139EBA218DB25000BBD6BD /* WeatherOverView.swift in Sources */,
+				19139ECB218DBCCA00BBD6BD /* City+CoreDataProperties.swift in Sources */,
 				19DE5804218D95E3003268F0 /* MainViewController.swift in Sources */,
+				19139EC6218DBB4900BBD6BD /* Persistence.swift in Sources */,
 				19139EB8218DB22000BBD6BD /* WeatherData.swift in Sources */,
 				19DE57F2218D946D003268F0 /* backbaseassignment.xcdatamodeld in Sources */,
 				19DE57EA218D946D003268F0 /* AppDelegate.swift in Sources */,
