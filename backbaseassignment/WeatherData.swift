@@ -10,11 +10,11 @@ import Foundation
 
 struct WeatherData {
     
-    let temperature: Float?
+    let temperature: Double?
     let pressure: Double?
     let humidity: Double?
-    let minimumTemperature: Float?
-    let maxiumTemperature: Float?
+    let minimumTemperature: Double?
+    let maxiumTemperature: Double?
     let seaLevelPressure: Double?
     let groundLevelPressure: Double?
     
@@ -31,11 +31,11 @@ struct WeatherData {
     
     init(json: [String: Any]) {
         
-        if let _temp = json[JSONKeys.temp] as? Float {
+        if let _temp = json[JSONKeys.temp] as? Double {
             temperature = _temp
         }
         else {
-            temperature = -MAXFLOAT
+            temperature = Double(-MAXFLOAT)
         }
         
         if let _pressure = json[JSONKeys.pressure] as? Double {
@@ -52,18 +52,18 @@ struct WeatherData {
             humidity = Double(-MAXFLOAT)
         }
         
-        if let _mintemp = json[JSONKeys.temp_min] as? Float {
+        if let _mintemp = json[JSONKeys.temp_min] as? Double {
             minimumTemperature = _mintemp
         }
         else {
-            minimumTemperature = -MAXFLOAT
+            minimumTemperature = Double(-MAXFLOAT)
         }
         
-        if let _maxtemp = json[JSONKeys.temp_max] as? Float {
+        if let _maxtemp = json[JSONKeys.temp_max] as? Double {
             maxiumTemperature = _maxtemp
         }
         else {
-            maxiumTemperature = -MAXFLOAT
+            maxiumTemperature = Double(-MAXFLOAT)
         }
         
         if let _pressure = json[JSONKeys.sea_level] as? Double {

@@ -8,7 +8,9 @@
 
 import UIKit
 
-class CityDetailViewController: UIViewController {
+class CityDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var detailTableView: UITableView!
     
     var city: City?
 
@@ -17,6 +19,8 @@ class CityDetailViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        setupUI()
 
         distributeData()
     }
@@ -26,6 +30,18 @@ class CityDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         updateData()
+    }
+    
+    // MARK: - UI Customization
+    
+    private func setupUI() {
+        
+        setupTableView()
+    }
+    
+    private func setupTableView() {
+        
+        detailTableView.tableFooterView = UIView()
     }
     
     // MARK: - Data integration
@@ -40,6 +56,8 @@ class CityDetailViewController: UIViewController {
             
             title = "N/A"
         }
+        
+        detailTableView.reloadData()
     }
     
     // MARK: - API integration
@@ -60,5 +78,47 @@ class CityDetailViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    // MARK: - TableView
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return city != nil ? 1 : 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: LocationOverviewCell.reuseId, for: indexPath) as? LocationOverviewCell {
+            
+            if let _city = city {
+                
+                cell.setup(with: _city)
+            }
+            
+            return cell
+        }
+        
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 }

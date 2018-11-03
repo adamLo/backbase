@@ -61,28 +61,27 @@ extension City {
         name = weather.displayName
         id = weather.cityId
         
-        if let coords = weather.coordinates {
-            
+        if let coords = weather.coordinates {            
             latitude = coords.latitude
             longitude = coords.longitude
         }
         
         if let temp = weather.main?.temperature {
-            currentTemp = temp
+            currentTemp = Float(temp)
         }
         else {
             currentTemp = 0
         }
         
         if let maxTemp = weather.main?.maxiumTemperature {
-            self.maxTemp = maxTemp
+            self.maxTemp = Float(maxTemp)
         }
         else {
             maxTemp = 0
         }
         
         if let minTemp = weather.main?.minimumTemperature {
-            self.minTemp =  minTemp
+            self.minTemp =  Float(minTemp)
         }
         else {
             minTemp = 0
