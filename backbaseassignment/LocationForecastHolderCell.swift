@@ -11,6 +11,8 @@ import UIKit
 class LocationForecastHolderCell: UITableViewCell {
 
     static let reuseId = "forecastHolderCell"
+    
+    private(set) var forecastViewController: LocationForecastViewController?
 
     func setup(with forecasts: [WeatherForecastItem]) {
         

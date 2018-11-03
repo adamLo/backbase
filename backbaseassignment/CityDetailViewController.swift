@@ -15,6 +15,7 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     var city: City?
     private var weather: WeatherQueryItem?
     private var forecasts: [WeatherForecastItem]?
+    private let forecastCellHeightRatio: CGFloat = 0.25
     
     private enum CellType: Int {
         
@@ -202,16 +203,38 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return UITableView.automaticDimension
+        let type = cellTypes[indexPath.row]
+        return type == .forecast ? 100 : UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return UITableView.automaticDimension
+        let type = cellTypes[indexPath.row]
+        return type == .forecast ? tableView.bounds.size.height * forecastCellHeightRatio : UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if let forecastCell = cell as? LocationForecastHolderCell, let controller = forecastCell.forecastViewController {
+            
+            controller.willMove(toParent: self)
+            self.addChild(controller)
+            controller.didMove(toParent: self)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if let forecastCell = cell as? LocationForecastHolderCell, let controller = forecastCell.forecastViewController {
+            
+            controller.willMove(toParent: nil)
+            controller.removeFromParent()
+            controller.didMove(toParent: nil)
+        }
     }
 }

@@ -58,8 +58,7 @@ class OpenWeatherMap {
             print("\(urlRequest.httpMethod!) \(urlRequest.url!) -> \(httpCode)\n\(dataString ?? "EMPTY"), error: \(String(describing: error))")
             #endif
             
-            DispatchQueue.main.async {
-                
+            DispatchQueue.main.async {                
                 (UIApplication.shared.delegate as! AppDelegate).hideNetworkIndicator()
             }
             
@@ -268,6 +267,10 @@ class OpenWeatherMap {
                     let item = WeatherForecastItem(json: _item, units: unit)
                     list.append(item)
                 }
+                
+                list.sort(by: { (item1, item2) -> Bool in
+                    return item1.time < item2.time
+                })
                 
                 DispatchQueue.main.async {
                     completion?(list.isEmpty ? nil : list, nil)

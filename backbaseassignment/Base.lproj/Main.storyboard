@@ -299,6 +299,63 @@
             </objects>
             <point key="canvasLocation" x="932" y="340"/>
         </scene>
+        <!--Location Forecast View Controller-->
+        <scene sceneID="jAg-gQ-DDY">
+            <objects>
+                <viewController storyboardIdentifier="LocationForecastViewController" id="DW8-KV-qs0" customClass="LocationForecastViewController" customModule="backbaseassignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u7Z-Dt-YgI"/>
+                        <viewControllerLayoutGuide type="bottom" id="sIM-He-kV4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iNE-HH-Gna">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="T0P-jA-VZC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5cZ-IE-Vao">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XGl-HK-Ja9">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="DW8-KV-qs0" id="sB9-eZ-wiG"/>
+                                    <outlet property="delegate" destination="DW8-KV-qs0" id="Kl4-JP-qZ2"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="T0P-jA-VZC" secondAttribute="bottom" id="2nq-M3-rmX"/>
+                            <constraint firstItem="T0P-jA-VZC" firstAttribute="top" secondItem="u7Z-Dt-YgI" secondAttribute="bottom" id="ANx-TE-8Wa"/>
+                            <constraint firstAttribute="trailing" secondItem="T0P-jA-VZC" secondAttribute="trailing" id="LHo-3y-wiB"/>
+                            <constraint firstItem="T0P-jA-VZC" firstAttribute="leading" secondItem="iNE-HH-Gna" secondAttribute="leading" id="dMA-cF-bDU"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="100"/>
+                    <connections>
+                        <outlet property="forecastCollectionView" destination="T0P-jA-VZC" id="ffM-y7-idB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BAf-OF-m0t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1724" y="353"/>
+        </scene>
         <!--Add Location View Controller-->
         <scene sceneID="gYg-N5-l6b">
             <objects>
