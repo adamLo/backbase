@@ -143,7 +143,7 @@ class OpenWeatherMap {
          
             if let _result = result {
                 
-                let weather = WeatherQueryItem(json: _result)
+                let weather = WeatherQueryItem(json: _result, units: unit)
                 
                 DispatchQueue.main.async {
                     completion?(weather, nil)
@@ -158,7 +158,7 @@ class OpenWeatherMap {
         }
     }
     
-    func update(city: City, unit: Units = .metric, completion:((_ success: Bool, _ error: Error?) -> ())?) {
+    func update(city: City, unit: Units = .metric, completion:((_ success: Bool, _ weather: WeatherQueryItem?, _ error: Error?) -> ())?) {
         
         let objectId = city.objectID
         
@@ -178,7 +178,7 @@ class OpenWeatherMap {
         }
         else {
             
-            completion?(false, nil)
+            completion?(false, nil, nil)
             return
         }
         
@@ -191,7 +191,7 @@ class OpenWeatherMap {
             
             if let _result = result {
                 
-                let weather = WeatherQueryItem(json: _result)
+                let weather = WeatherQueryItem(json: _result, units: unit)
                 
                 let context = Persistence.shared.createNewManagedObjectContext()
                 
@@ -212,14 +212,14 @@ class OpenWeatherMap {
                     }
                     
                     DispatchQueue.main.async {
-                        completion?(success, error)
+                        completion?(success, weather, error)
                     }
                 }
             }
             else {
                 
                 DispatchQueue.main.async {
-                    completion?(false, error)
+                    completion?(false, nil, error)
                 }
             }
         }

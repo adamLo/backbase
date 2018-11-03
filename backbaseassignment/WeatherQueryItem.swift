@@ -17,8 +17,8 @@ struct WeatherQueryItem {
     let name: String?
     let main: WeatherData?
     
-    let windSpeed: Float?
-    let windDirection: Float?
+    let windSpeed: Double?
+    let windDirection: Double?
     
     let clouds: WeatherClouds?
     
@@ -28,6 +28,8 @@ struct WeatherQueryItem {
     let time: Date
     
     let system: WeatherSystem?
+    
+    let units: Units
     
     var displayName: String {
         
@@ -66,7 +68,9 @@ struct WeatherQueryItem {
         static let sys      = "sys"
     }
     
-    init(json: [String: Any]) {
+    init(json: [String: Any], units: Units) {
+        
+        self.units = units
         
         if let _coord = json[JSONKeys.coord] as? [String: Any], let lat = _coord[JSONKeys.lat] as? Double, let lon = _coord[JSONKeys.lon] as? Double {
             
@@ -103,7 +107,7 @@ struct WeatherQueryItem {
             main = nil
         }
         
-        if let _wind = json[JSONKeys.wind] as? [String: Any], let _speed = _wind[JSONKeys.speed] as? Float, let _dir = _wind[JSONKeys.deg] as? Float {
+        if let _wind = json[JSONKeys.wind] as? [String: Any], let _speed = _wind[JSONKeys.speed] as? Double, let _dir = _wind[JSONKeys.deg] as? Double {
             
             windSpeed = _speed
             windDirection = _dir

@@ -13,6 +13,13 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var detailTableView: UITableView!
     
     var city: City?
+    private var weather: WeatherQueryItem?
+    
+    private enum CellType: Int {
+        
+        case overview = 0, temperatureAndWind, precipation
+    }
+    private var cellTypes = [CellType]()
 
     // MARK: - Controller Lifecycle
     
@@ -57,6 +64,15 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             title = "N/A"
         }
         
+        cellTypes.removeAll()
+        if let _ = city {
+            cellTypes.append(.overview)
+        }
+        if let _ = weather {
+            cellTypes.append(.temperatureAndWind)
+            cellTypes.append(.precipation)
+        }
+        
         detailTableView.reloadData()
     }
     
@@ -66,15 +82,39 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         if let _city = city {
             
-            OpenWeatherMap.shared.update(city: _city) {[weak self] (success, error) in
+            let objectId = _city.objectID
+            
+            OpenWeatherMap.shared.update(city: _city) {[weak self] (success, weather, error) in
                 
-                if success,let _self = self {
+                if success, let _self = self {
+                    
+                    _self.weather = weather
                     
                     if let context = Persistence.shared.managedObjectContext {
                         
-                        context.refresh(_city, mergeChanges: true)
-                        _self.distributeData()
+                        context.perform {
+                            
+                            do {
+                                
+                                let _city = try context.existingObject(with: objectId) as? City
+                                _self.city = _city
+                                
+                                _self.distributeData()
+                            }
+                            catch let _error {
+
+                                _self.show(error: _error)
+                            }
+                        }
                     }
+                }
+                else if let _error = error {
+                    
+                    self?.show(error: _error)
+                }
+                else {
+                    
+                    self?.show(message: NSLocalizedString("Error updating weather", comment: "General error when updating location weather"))
                 }
             }
         }
@@ -84,24 +124,39 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 1
+        return cellTypes.isEmpty ? 0 : 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return city != nil ? 1 : 0
+        return cellTypes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: LocationOverviewCell.reuseId, for: indexPath) as? LocationOverviewCell {
+        let cellType = cellTypes[indexPath.row]
+        switch cellType {
             
-            if let _city = city {
+        case .overview:
+            if let _city = city, let cell = tableView.dequeueReusableCell(withIdentifier: LocationOverviewCell.reuseId, for: indexPath) as? LocationOverviewCell {
                 
                 cell.setup(with: _city)
+                return cell
             }
             
-            return cell
+        case .temperatureAndWind:
+            if let _weather = weather, let cell = tableView.dequeueReusableCell(withIdentifier: LocationTemperatureAndWindCell.reuseId, for: indexPath) as? LocationTemperatureAndWindCell {
+                
+                cell.setup(with: _weather)
+                return cell
+            }
+            
+        case.precipation:
+            if let _weather = weather, let cell = tableView.dequeueReusableCell(withIdentifier: LocationPrecipationCell.reuseId, for: indexPath) as? LocationPrecipationCell {
+                
+                cell.setup(with: _weather)
+                return cell
+            }
         }
         
         return UITableViewCell()

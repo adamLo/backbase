@@ -21,4 +21,14 @@ enum Units: String {
         
         return "℃ "
     }
+    
+    var speedUnit: String {
+        
+        if self == .imperial {
+            
+            return "mph"
+        }
+        
+        return "km/h"
+    }
 }

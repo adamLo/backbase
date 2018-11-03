@@ -178,7 +178,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fp-gm-Eng">
-                                                    <rect key="frame" x="169" y="5" width="37" height="109"/>
+                                                    <rect key="frame" x="169" y="5" width="37" height="109.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -189,8 +189,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Cloudy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Oo-O9-VYD">
-                                                    <rect key="frame" x="160.5" y="124" width="54" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Cloudy" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Oo-O9-VYD">
+                                                    <rect key="frame" x="160.5" y="124.5" width="54" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -215,6 +215,57 @@
                                             <outlet property="conditionsLabel" destination="0Oo-O9-VYD" id="KwA-dn-Mon"/>
                                             <outlet property="temperatureLabel" destination="8fp-gm-Eng" id="yEA-Fs-Ldy"/>
                                             <outlet property="unitLabel" destination="6mf-Ay-npi" id="Opw-a4-9he"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="temperatureAndWindCell" id="is8-vq-DH2" customClass="LocationTemperatureAndWindCell" customModule="backbaseassignment" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="178" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="is8-vq-DH2" id="9C1-3F-inU">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High: 10C Low: 5C Wind: 5km/h 90o" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pl3-zr-Lm9">
+                                                    <rect key="frame" x="70.5" y="5" width="234" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Pl3-zr-Lm9" secondAttribute="bottom" constant="5" id="ItD-AP-4og"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Pl3-zr-Lm9" secondAttribute="trailing" constant="10" id="SSS-gU-eQ4"/>
+                                                <constraint firstItem="Pl3-zr-Lm9" firstAttribute="top" secondItem="9C1-3F-inU" secondAttribute="top" constant="5" id="avD-ia-yMw"/>
+                                                <constraint firstItem="Pl3-zr-Lm9" firstAttribute="centerX" secondItem="9C1-3F-inU" secondAttribute="centerX" id="b4S-sG-6dk"/>
+                                                <constraint firstItem="Pl3-zr-Lm9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9C1-3F-inU" secondAttribute="leading" constant="10" id="hnh-iF-gaV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dataLabel" destination="Pl3-zr-Lm9" id="Vfz-tG-Aup"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="precipationCell" id="Lzi-i9-IXk" customClass="LocationPrecipationCell" customModule="backbaseassignment" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="222" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lzi-i9-IXk" id="ML2-kr-Vvh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity: 65% precipation: 0% rain 0% snow" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdo-qF-QiJ">
+                                                    <rect key="frame" x="10" y="5" width="355" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="xdo-qF-QiJ" secondAttribute="bottom" constant="5" id="7GH-Rt-i6A"/>
+                                                <constraint firstItem="xdo-qF-QiJ" firstAttribute="leading" secondItem="ML2-kr-Vvh" secondAttribute="leading" constant="10" id="8FD-MQ-qM0"/>
+                                                <constraint firstItem="xdo-qF-QiJ" firstAttribute="top" secondItem="ML2-kr-Vvh" secondAttribute="top" constant="5" id="Ok8-n2-ueB"/>
+                                                <constraint firstAttribute="trailing" secondItem="xdo-qF-QiJ" secondAttribute="trailing" constant="10" id="hJW-LH-HBb"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dataLabel" destination="xdo-qF-QiJ" id="3xB-Fr-pXu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

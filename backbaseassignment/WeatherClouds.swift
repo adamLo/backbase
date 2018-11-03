@@ -10,7 +10,7 @@ import Foundation
 
 struct WeatherClouds {
     
-    let all: Float?
+    let all: Double?
     
     private struct JSONKeys {
         
@@ -19,6 +19,6 @@ struct WeatherClouds {
     
     init(json: [String: Any]) {
         
-        all = json[JSONKeys.all] as? Float
+        all = json[JSONKeys.all] as? Double
     }
 }
