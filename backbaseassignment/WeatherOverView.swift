@@ -10,7 +10,7 @@ import Foundation
 
 struct WeatherOverView {
     
-    let id: String?
+    let id: Int?
     let main: String?
     let wDescription: String?
     let iconId: String?
@@ -25,7 +25,7 @@ struct WeatherOverView {
     
     init(json: [String: Any]) {
         
-        id = json[JSONKeys.id] as? String
+        id = json[JSONKeys.id] as? Int
         main = json[JSONKeys.main] as? String
         wDescription = json[JSONKeys.description] as? String
         iconId = json[JSONKeys.icon] as? String

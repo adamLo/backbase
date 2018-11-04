@@ -10,8 +10,7 @@ import Foundation
 
 struct WeatherSystem {
     
-    let id: String?
-    let message: String?
+    let id: Int?
     let countryCode: String?
     let sunrise: Date?
     let sunset: Date?
@@ -19,7 +18,6 @@ struct WeatherSystem {
     private struct JSONKeys {
         
         static let id       = "id"
-        static let message  = "message"
         static let country  = "country"
         static let sunrise  = "sunrise"
         static let sunset   = "sunset"
@@ -27,14 +25,7 @@ struct WeatherSystem {
     
     init(json: [String: Any]) {
         
-        if let _id = json[JSONKeys.id] as? Int {
-            id = "\(_id)"
-        }
-        else {
-            id = nil
-        }
-        
-        message = json[JSONKeys.message] as? String
+        id = json[JSONKeys.id] as? Int
         countryCode = json[JSONKeys.country] as? String
         
         if let _sunrise = json[JSONKeys.sunrise] as? TimeInterval {
