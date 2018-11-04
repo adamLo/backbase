@@ -15,7 +15,7 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     var city: City?
     private var weather: WeatherQueryItem?
     private var forecast: [WeatherForecastItem]?
-    private let forecastCellHeightRatio: CGFloat = 0.2
+    private let forecastCellHeightRatio: CGFloat = 0.28
     
     private enum CellType: Int {
         

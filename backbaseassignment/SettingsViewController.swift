@@ -78,6 +78,9 @@ class SettingsViewController: UIViewController {
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel btton title"), style: .cancel, handler: nil))
         
+        alert.popoverPresentationController?.sourceView = unitsButton
+        alert.popoverPresentationController?.sourceRect = unitsButton.bounds
+        
         present(alert, animated: true, completion: nil)
     }
     

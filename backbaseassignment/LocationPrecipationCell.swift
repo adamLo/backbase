@@ -32,15 +32,15 @@ class LocationPrecipationCell: UITableViewCell {
         
         var precipation = ""
         
-        if let rain = weather.rain?.hour3 {
+        if let rain = weather.rain?.hour3, rain > 0.0 {
             
-            precipation = String(format: NSLocalizedString("%0.1f%% rain", comment: "Rain precipation format"), rain)
+            precipation = String(format: NSLocalizedString("%0.1f %@ rain", comment: "Rain precipation format"), rain, weather.units.lengthUnit)
         }
         
-        if let snow = weather.snow?.hour3 {
+        if let snow = weather.snow?.hour3, snow > 0.0 {
             
             precipation += precipation.isEmpty ? "" : ", "
-            precipation = String(format: NSLocalizedString("%0.1f%% snow", comment: "Rain precipation format"), snow)
+            precipation = String(format: NSLocalizedString("%0.1f %@ snow", comment: "Rain precipation format"), snow, weather.units.lengthUnit)
         }
         
         text += text.isEmpty ? "" : " "

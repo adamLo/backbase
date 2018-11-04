@@ -29,7 +29,17 @@ enum Units: String {
             return "mph"
         }
         
-        return "km/h"
+        return "m/s"
+    }
+    
+    var lengthUnit: String {
+        
+        if self == .imperial {
+            
+            return "in"
+        }
+        
+        return "mm"
     }
     
     var localizedDescription: String {
