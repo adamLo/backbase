@@ -95,7 +95,7 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             
             let objectId = _city.objectID
             
-            OpenWeatherMap.shared.update(city: _city) {[weak self] (success, weather, error) in
+            OpenWeatherMap.shared.update(city: _city, unit: UserDefaults.standard.units) {[weak self] (success, weather, error) in
                 
                 if success, let _self = self {
                     
@@ -135,7 +135,7 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         if let _city = city {
 
-            OpenWeatherMap.shared.fetchForecast(for: _city) {[weak self] (forecast, error) in
+            OpenWeatherMap.shared.fetchForecast(for: _city, unit: UserDefaults.standard.units) {[weak self] (forecast, error) in
                 
                 guard let _self = self else {return}
 

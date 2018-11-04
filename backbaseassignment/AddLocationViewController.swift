@@ -158,7 +158,7 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
 
         showActivity()
         
-        OpenWeatherMap.shared.query(location: location) {[weak self] (item, error) in
+        OpenWeatherMap.shared.query(location: location, unit: UserDefaults.standard.units) {[weak self] (item, error) in
             
             guard let _self = self else {return}
             
@@ -208,7 +208,7 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
         
         showActivity()
         
-        OpenWeatherMap.shared.search(city: query) {[weak self] (item, error) in
+        OpenWeatherMap.shared.search(city: query, unit: UserDefaults.standard.units) {[weak self] (item, error) in
             
             guard let _self = self else {return}
             

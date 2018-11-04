@@ -31,4 +31,14 @@ enum Units: String {
         
         return "km/h"
     }
+    
+    var localizedDescription: String {
+        
+        if self == .imperial {
+            
+            return NSLocalizedString("Imperial", comment: "Imperial units title")
+        }
+        
+        return NSLocalizedString("Metric", comment: "Metric units title")
+    }
 }

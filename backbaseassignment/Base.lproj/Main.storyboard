@@ -171,6 +171,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BUT-l1-DBb">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="3Qa-4t-W5A">
+                            <connections>
+                                <segue destination="eiJ-lf-LFs" kind="show" identifier="settings" id="lJM-fq-y6r"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="EPm-Zj-8Zc">
                             <connections>
                                 <segue destination="i5f-89-pvA" kind="show" identifier="addCity" id="ac6-6y-bDY"/>
@@ -333,6 +338,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDN-KA-c1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="932" y="340"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="jA8-yZ-Pr6">
+            <objects>
+                <viewController title="Settings" id="eiJ-lf-LFs" customClass="SettingsViewController" customModule="backbaseassignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1ld-fC-3XN"/>
+                        <viewControllerLayoutGuide type="bottom" id="TVw-VY-LSE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aM8-bO-Zd4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Units" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEi-XK-AfW">
+                                <rect key="frame" x="16" y="84" width="40" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9CN-Hr-ar8">
+                                <rect key="frame" x="315" y="79.5" width="44" height="30"/>
+                                <state key="normal" title="metric"/>
+                                <connections>
+                                    <action selector="unitsButtonTouched:" destination="eiJ-lf-LFs" eventType="touchUpInside" id="qqB-dK-Jgw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVE-hx-TsB">
+                                <rect key="frame" x="16" y="134.5" width="343" height="30"/>
+                                <state key="normal" title="Clear bookmarks"/>
+                                <connections>
+                                    <action selector="clearButtonTouched:" destination="eiJ-lf-LFs" eventType="touchUpInside" id="0p3-JC-Z6g"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ydv-DT-Nda">
+                                <rect key="frame" x="16" y="189.5" width="343" height="30"/>
+                                <state key="normal" title="Help"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HEi-XK-AfW" firstAttribute="top" secondItem="1ld-fC-3XN" secondAttribute="bottom" constant="20" id="0d1-RS-m5G"/>
+                            <constraint firstItem="HEi-XK-AfW" firstAttribute="leading" secondItem="aM8-bO-Zd4" secondAttribute="leadingMargin" id="1Ka-fM-ig0"/>
+                            <constraint firstItem="sVE-hx-TsB" firstAttribute="leading" secondItem="HEi-XK-AfW" secondAttribute="leading" id="58y-zc-bwt"/>
+                            <constraint firstItem="sVE-hx-TsB" firstAttribute="top" secondItem="9CN-Hr-ar8" secondAttribute="bottom" constant="25" id="8xM-Sh-7hg"/>
+                            <constraint firstItem="9CN-Hr-ar8" firstAttribute="centerY" secondItem="HEi-XK-AfW" secondAttribute="centerY" id="DMq-Zm-IaG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9CN-Hr-ar8" secondAttribute="trailing" id="Dyk-1H-tbK"/>
+                            <constraint firstItem="9CN-Hr-ar8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HEi-XK-AfW" secondAttribute="trailing" id="Oar-K7-vEo"/>
+                            <constraint firstItem="Ydv-DT-Nda" firstAttribute="trailing" secondItem="sVE-hx-TsB" secondAttribute="trailing" id="dnL-6p-mMV"/>
+                            <constraint firstItem="Ydv-DT-Nda" firstAttribute="leading" secondItem="sVE-hx-TsB" secondAttribute="leading" id="j3o-Ze-VWs"/>
+                            <constraint firstItem="sVE-hx-TsB" firstAttribute="trailing" secondItem="9CN-Hr-ar8" secondAttribute="trailing" id="k8c-bd-8RX"/>
+                            <constraint firstItem="Ydv-DT-Nda" firstAttribute="top" secondItem="sVE-hx-TsB" secondAttribute="bottom" constant="25" id="tYK-xU-lmd"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="clearButton" destination="sVE-hx-TsB" id="Xiq-cq-Cu9"/>
+                        <outlet property="helpButton" destination="Ydv-DT-Nda" id="m6T-dz-gOD"/>
+                        <outlet property="unitsButton" destination="9CN-Hr-ar8" id="BZM-Sb-gC1"/>
+                        <outlet property="unitsLabel" destination="HEi-XK-AfW" id="QoM-4w-jCI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UQy-Gd-2cl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="78" y="1017"/>
         </scene>
         <!--Location Forecast View Controller-->
         <scene sceneID="jAg-gQ-DDY">

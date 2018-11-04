@@ -95,5 +95,7 @@ extension City {
         }
         
         lastUpdate = NSDate(timeIntervalSince1970: weather.time.timeIntervalSince1970)
+        
+        units = UserDefaults.standard.units.rawValue
     }
 }
