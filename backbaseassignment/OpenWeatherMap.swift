@@ -28,6 +28,7 @@ class OpenWeatherMap {
         static let units    = "units"
         static let id       = "id"
         static let forecast = "forecast"
+        static let q        = "q"
     }
     
     private struct JSONKeys {
@@ -58,7 +59,7 @@ class OpenWeatherMap {
             print("\(urlRequest.httpMethod!) \(urlRequest.url!) -> \(httpCode)\n\(dataString ?? "EMPTY"), error: \(String(describing: error))")
             #endif
             
-            DispatchQueue.main.async {                
+            DispatchQueue.main.async {
                 (UIApplication.shared.delegate as! AppDelegate).hideNetworkIndicator()
             }
             
@@ -274,6 +275,38 @@ class OpenWeatherMap {
                 
                 DispatchQueue.main.async {
                     completion?(list.isEmpty ? nil : list, nil)
+                }
+            }
+            else {
+                
+                DispatchQueue.main.async {
+                    completion?(nil, error)
+                }
+            }
+        }
+    }
+    
+    func search(city: String, unit: Units = .metric, completion: ((_ weather: WeatherQueryItem?, _ error: Error?) -> ())?) {
+        
+        let queryItems = [
+            URLQueryItem(name: Configuration.appid, value: Configuration.apiKey),
+            URLQueryItem(name: Configuration.q, value: city),
+            URLQueryItem(name: Configuration.units, value: unit.rawValue)
+        ]
+        
+        var urlComponents = URLComponents(url: Configuration.baseURL.appendingPathComponent(Configuration.weather), resolvingAgainstBaseURL: false)!
+        urlComponents.queryItems = queryItems
+        
+        let url = urlComponents.url!
+        
+        get(from: url) { (result, error) in
+            
+            if let _result = result {
+                
+                let weather = WeatherQueryItem(json: _result, units: unit)
+                
+                DispatchQueue.main.async {
+                    completion?(weather, nil)
                 }
             }
             else {

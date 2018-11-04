@@ -425,10 +425,16 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="searhDidEndOnExit:" destination="i5f-89-pvA" eventType="editingDidEndOnExit" id="5jn-O3-YW5"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pC-qw-ASZ">
                                         <rect key="frame" x="319" y="5" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="searchButtonTapped:" destination="i5f-89-pvA" eventType="touchUpInside" id="nY1-iG-TdF"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -494,6 +500,8 @@
                         <outlet property="activityIndicator" destination="0zZ-Z7-hz6" id="UUw-b3-d0k"/>
                         <outlet property="activityLabel" destination="bKU-Mn-g1y" id="rNN-Iq-82T"/>
                         <outlet property="mapView" destination="Ort-Ee-YZX" id="RbZ-aP-siK"/>
+                        <outlet property="searchButton" destination="2pC-qw-ASZ" id="CHh-CV-mOt"/>
+                        <outlet property="searchTextField" destination="K76-ur-qgy" id="7fU-LH-YDS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ONS-Kq-poS" userLabel="First Responder" sceneMemberID="firstResponder"/>

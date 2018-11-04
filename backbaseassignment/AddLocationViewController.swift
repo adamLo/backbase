@@ -13,6 +13,9 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchButton: UIButton!
+    
     @IBOutlet weak var activityHolderView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var activityLabel: UILabel!
@@ -32,7 +35,18 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
     
     private func setupUI() {
         
+        setupSearch()
         hideActivity(animated: false)
+    }
+    
+    private func setupSearch() {
+        
+        searchTextField.font = UIFont.defaultFont(style: .regular, size: .base)
+        searchTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("City name, country", comment: "Add location search placeholder"), attributes: [NSAttributedString.Key.font: UIFont.defaultFont(style: .regular, size: .base), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        
+        searchButton.titleLabel?.font = UIFont.defaultFont(style: .bold, size: .base)
+        searchButton.setTitle(NSLocalizedString("Search", comment: "Search button title"), for: .normal)
+        searchButton.setTitleColor(UIColor.darkGray, for: .normal)
     }
 
     // MARK: - UI manipulations
@@ -89,6 +103,19 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
         let location = mapView.convert(tapPoint, toCoordinateFrom: mapView)
         
         query(location: location)
+    }
+    
+    @IBAction func searchButtonTapped(_ sender: Any) {
+        
+        if let _query = searchTextField.text, !_query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            
+            search(for: _query.trimmingCharacters(in: .whitespacesAndNewlines))
+        }
+    }
+    
+    @IBAction func searhDidEndOnExit(_ sender: Any) {
+        
+        searchButtonTapped(sender)
     }
     
     // MARK: - Data integration
@@ -173,6 +200,27 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
                         completion?(false, error)
                     }
                 }
+            }
+        }
+    }
+    
+    private func search(for query: String) {
+        
+        showActivity()
+        
+        OpenWeatherMap.shared.search(city: query) {[weak self] (item, error) in
+            
+            guard let _self = self else {return}
+            
+            _self.hideActivity(animated: true)
+            
+            if let _item = item {
+                
+                _self.display(result: _item)
+            }
+            else {
+                
+                _self.displayNoResult(error: error?.localizedDescription)
             }
         }
     }
