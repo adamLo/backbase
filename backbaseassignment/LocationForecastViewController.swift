@@ -32,13 +32,7 @@ class LocationForecastViewController: UIViewController, UICollectionViewDelegate
         controller.forecast = forecast
         return controller
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
+        
     // MARK: - CollectionView
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

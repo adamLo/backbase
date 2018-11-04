@@ -11,6 +11,7 @@ import UIKit
 class HelpViewController: UIViewController {
 
     @IBOutlet weak var helpWebView: UIWebView!
+    
     // MARK: - Controller Lifecycle
     
     override func viewDidLoad() {

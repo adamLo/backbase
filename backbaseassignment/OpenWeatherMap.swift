@@ -38,7 +38,7 @@ class OpenWeatherMap {
     
     private lazy var defaultSession = URLSession(configuration: URLSessionConfiguration.default)
     
-    // MARK: - Queries
+    // MARK: - Private
     
     private func send(request urlRequest: URLRequest, completion: SendCompletionBlockType?) {
         
