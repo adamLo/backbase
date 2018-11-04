@@ -12,7 +12,11 @@ import CoreData
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var bookmarksTableView: UITableView!
+    
     @IBOutlet weak var addButton: UIBarButtonItem!
+    
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchButton: UIButton!
     
     private struct Segue {
         
@@ -40,11 +44,39 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         title = NSLocalizedString("Locations", comment: "Main screen navigation title")
         
         setupTableView()
+        setupSearch()
     }
     
     private func setupTableView() {
         
         bookmarksTableView.tableFooterView = UIView()
+    }
+    
+    private func setupSearch() {
+        
+        searchTextField.font = UIFont.defaultFont(style: .regular, size: .base)
+        searchTextField.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("City name, country", comment: "Add location search placeholder"), attributes: [NSAttributedString.Key.font: UIFont.defaultFont(style: .regular, size: .base), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        
+        searchButton.titleLabel?.font = UIFont.defaultFont(style: .bold, size: .base)
+        searchButton.setTitle(NSLocalizedString("Search", comment: "Search button title"), for: .normal)
+        searchButton.setTitleColor(UIColor.darkGray, for: .normal)
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func searchDidEndOnExit(_ sender: Any) {
+        
+        search(for: searchTextField.text)
+    }
+    
+    @IBAction func searchEditingChanged(_ sender: Any) {
+        
+        search(for: searchTextField.text)
+    }
+    
+    @IBAction func searchButtonTapped(_ sender: Any) {
+        
+        search(for: searchTextField.text)
     }
     
     // MARK: - TableView
@@ -271,6 +303,30 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
                 alert.addAction((UIAlertAction(title: NSLocalizedString("OK", comment: "OK Button title"), style: .default, handler: nil)))
                 present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    private func search(for query: String?) {
+        
+        if let _controller =  citiesFetchedResultsController {
+        
+            var searchPredicate: NSPredicate?
+            
+            if let _query = query, !_query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            
+                searchPredicate = NSPredicate(format: "name CONTAINS[cd] %@", _query.trimmingCharacters(in: .whitespacesAndNewlines))
+            }
+            
+            _controller.fetchRequest.predicate = searchPredicate
+            do {
+                
+                try _controller.performFetch()
+                bookmarksTableView.reloadData()
+            }
+            catch let error {
+                
+                show(error: error)
             }
         }
     }

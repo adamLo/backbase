@@ -40,9 +40,42 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vq8-G1-ZO3">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="LWn-aA-d8a">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bRC-2s-bxW">
+                                            <rect key="frame" x="10" y="5" width="297" height="34"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="searchDidEndOnExit:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="BGe-Ga-GrA"/>
+                                                <action selector="searchEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="SEQ-74-h4u"/>
+                                            </connections>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bs9-lG-aG2">
+                                            <rect key="frame" x="317" y="5" width="48" height="34"/>
+                                            <state key="normal" title="Search"/>
+                                            <connections>
+                                                <action selector="searchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1TF-NM-7Hg"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Bs9-lG-aG2" secondAttribute="bottom" constant="5" id="3Tc-9z-i4h"/>
+                                        <constraint firstItem="bRC-2s-bxW" firstAttribute="top" secondItem="LWn-aA-d8a" secondAttribute="top" constant="5" id="5QF-tC-6CJ"/>
+                                        <constraint firstItem="Bs9-lG-aG2" firstAttribute="leading" secondItem="bRC-2s-bxW" secondAttribute="trailing" constant="10" id="Ile-kT-OV4"/>
+                                        <constraint firstItem="bRC-2s-bxW" firstAttribute="leading" secondItem="LWn-aA-d8a" secondAttribute="leading" constant="10" id="JXr-J9-ckx"/>
+                                        <constraint firstItem="Bs9-lG-aG2" firstAttribute="top" secondItem="LWn-aA-d8a" secondAttribute="top" constant="5" id="cbk-ff-ZgE"/>
+                                        <constraint firstAttribute="bottom" secondItem="bRC-2s-bxW" secondAttribute="bottom" constant="5" id="nfO-fI-OSB"/>
+                                        <constraint firstAttribute="trailing" secondItem="Bs9-lG-aG2" secondAttribute="trailing" constant="10" id="vWQ-KL-UoL"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cityCell" rowHeight="51" id="X2M-H8-SYv" customClass="CityCell" customModule="backbaseassignment" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="51"/>
+                                        <rect key="frame" x="0.0" y="72" width="375" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X2M-H8-SYv" id="YjV-6Q-00d">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="50.5"/>
@@ -147,6 +180,8 @@
                     <connections>
                         <outlet property="addButton" destination="EPm-Zj-8Zc" id="qG0-BR-z1z"/>
                         <outlet property="bookmarksTableView" destination="Vq8-G1-ZO3" id="apj-HJ-gP2"/>
+                        <outlet property="searchButton" destination="Bs9-lG-aG2" id="A9c-Yd-fxi"/>
+                        <outlet property="searchTextField" destination="bRC-2s-bxW" id="qwd-xY-XaW"/>
                         <segue destination="xsy-Yl-bob" kind="show" identifier="cityDetail" id="IEr-1n-wXE"/>
                     </connections>
                 </viewController>
