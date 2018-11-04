@@ -35,6 +35,8 @@
 		19139EEA218ED3E100BBD6BD /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139EE9218ED3E100BBD6BD /* Fonts.swift */; };
 		19139EED218EE38000BBD6BD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139EEC218EE38000BBD6BD /* SettingsViewController.swift */; };
 		19139EEF218EE80600BBD6BD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139EEE218EE80600BBD6BD /* Settings.swift */; };
+		19139EF2218EEE0600BBD6BD /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19139EF1218EEE0600BBD6BD /* HelpViewController.swift */; };
+		19139EF4218EEEE400BBD6BD /* help.html in Resources */ = {isa = PBXBuildFile; fileRef = 19139EF3218EEEE400BBD6BD /* help.html */; };
 		19DE57EA218D946D003268F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE57E9218D946D003268F0 /* AppDelegate.swift */; };
 		19DE57EF218D946D003268F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19DE57ED218D946D003268F0 /* Main.storyboard */; };
 		19DE57F2218D946D003268F0 /* backbaseassignment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 19DE57F0218D946D003268F0 /* backbaseassignment.xcdatamodeld */; };
@@ -72,6 +74,8 @@
 		19139EE9218ED3E100BBD6BD /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		19139EEC218EE38000BBD6BD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		19139EEE218EE80600BBD6BD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		19139EF1218EEE0600BBD6BD /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		19139EF3218EEEE400BBD6BD /* help.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = help.html; sourceTree = "<group>"; };
 		19DE57E6218D946D003268F0 /* backbaseassignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = backbaseassignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19DE57E9218D946D003268F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19DE57EE218D946D003268F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -183,6 +187,14 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		19139EF0218EEDE900BBD6BD /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				19139EF1218EEE0600BBD6BD /* HelpViewController.swift */,
+			);
+			name = Help;
+			sourceTree = "<group>";
+		};
 		19DE57DD218D946D003268F0 = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +228,7 @@
 		19DE57FE218D94C0003268F0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				19139EF0218EEDE900BBD6BD /* Help */,
 				19139EEB218EE36900BBD6BD /* Settings */,
 				19139ED2218E035300BBD6BD /* City Detail */,
 				19DE5802218D95C6003268F0 /* Main */,
@@ -241,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				19DE57F3218D9470003268F0 /* Assets.xcassets */,
+				19139EF3218EEEE400BBD6BD /* help.html */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -322,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19DE57F7218D9470003268F0 /* LaunchScreen.storyboard in Resources */,
+				19139EF4218EEEE400BBD6BD /* help.html in Resources */,
 				19DE57F4218D9470003268F0 /* Assets.xcassets in Resources */,
 				19DE57EF218D946D003268F0 /* Main.storyboard in Resources */,
 			);
@@ -361,6 +376,7 @@
 				19139EED218EE38000BBD6BD /* SettingsViewController.swift in Sources */,
 				19139ED6218E19D000BBD6BD /* LocationOverviewCell.swift in Sources */,
 				19139EE1218E4B2200BBD6BD /* WeatherForecastItem.swift in Sources */,
+				19139EF2218EEE0600BBD6BD /* HelpViewController.swift in Sources */,
 				19139EAA218D998100BBD6BD /* AddLocationViewController.swift in Sources */,
 				19139EE8218E52A600BBD6BD /* LocationForecastCell.swift in Sources */,
 				19139EDF218E47EA00BBD6BD /* LocationPrecipationCell.swift in Sources */,
