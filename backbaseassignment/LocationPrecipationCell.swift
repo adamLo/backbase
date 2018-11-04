@@ -13,6 +13,13 @@ class LocationPrecipationCell: UITableViewCell {
     @IBOutlet weak var dataLabel: UILabel!
     
     static let reuseId = "precipationCell"
+    
+    override func awakeFromNib() {
+        
+        super.awakeFromNib()
+        
+        dataLabel.font = UIFont.defaultFont(style: .regular, size: .large)
+    }
 
     func setup(with weather: WeatherQueryItem) {
         

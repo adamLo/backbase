@@ -15,7 +15,10 @@ class LocationTemperatureAndWindCell: UITableViewCell {
     static let reuseId = "temperatureAndWindCell"
 
     override func awakeFromNib() {
+        
         super.awakeFromNib()
+        
+        dataLabel.font = UIFont.defaultFont(style: .regular, size: .large)
     }
 
     func setup(with weather: WeatherQueryItem) {

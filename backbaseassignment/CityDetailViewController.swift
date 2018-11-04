@@ -14,8 +14,8 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var city: City?
     private var weather: WeatherQueryItem?
-    private var forecasts: [WeatherForecastItem]?
-    private let forecastCellHeightRatio: CGFloat = 0.15
+    private var forecast: [WeatherForecastItem]?
+    private let forecastCellHeightRatio: CGFloat = 0.2
     
     private enum CellType: Int {
         
@@ -78,7 +78,7 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
                 cellTypes.append(.precipation)
             }
             
-            if let _forecast = forecasts, !_forecast.isEmpty {
+            if let _forecast = forecast, !_forecast.isEmpty {
                 
                 cellTypes.append(.forecast)
             }
@@ -141,7 +141,7 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
 
                 if let _forecast = forecast {
                 
-                    _self.forecasts = _forecast
+                    _self.forecast = _forecast
                     _self.distributeData()
                 }
                 else {
@@ -191,7 +191,7 @@ class CityDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             }
             
         case .forecast:
-            if let _forecast = forecasts, let cell = tableView.dequeueReusableCell(withIdentifier: LocationForecastHolderCell.reuseId, for: indexPath) as? LocationForecastHolderCell {
+            if let _forecast = forecast, let cell = tableView.dequeueReusableCell(withIdentifier: LocationForecastHolderCell.reuseId, for: indexPath) as? LocationForecastHolderCell {
                 
                 cell.setup(with: _forecast)
                 return cell

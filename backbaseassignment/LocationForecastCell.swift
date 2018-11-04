@@ -33,6 +33,11 @@ class LocationForecastCell: UICollectionViewCell {
         super.awakeFromNib()
         
         contentView.backgroundColor = UIColor.black.withAlphaComponent(0.07)
+        
+        dateLabel.font = UIFont.defaultFont(style: .regular, size: .xxSmall)
+        temperatureLabel.font = UIFont.defaultFont(style: .bold, size: .xLarge)
+        unitLabel.font = UIFont.defaultFont(style: .regular, size: .small)
+        conditionLabel.font = UIFont.defaultFont(style: .regular, size: .small)
     }
     
     func setup(with item: WeatherForecastItem) {

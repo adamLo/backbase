@@ -47,17 +47,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         bookmarksTableView.tableFooterView = UIView()
     }
     
-    // Mark - Actions
-    
     // MARK: - TableView
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        if let count = citiesFetchedResultsController?.fetchedObjects?.count, count > 0 {
-            
-            return 1
-        }
-        return  0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

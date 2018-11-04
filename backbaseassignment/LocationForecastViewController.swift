@@ -12,7 +12,7 @@ class LocationForecastViewController: UIViewController, UICollectionViewDelegate
 
     @IBOutlet weak var forecastCollectionView: UICollectionView!
     
-    var forecasts: [WeatherForecastItem]? {
+    var forecast: [WeatherForecastItem]? {
         
         didSet {
             
@@ -25,11 +25,11 @@ class LocationForecastViewController: UIViewController, UICollectionViewDelegate
     
     // MARK: - Controller Lifecycle
     
-    static func controller(forecasts: [WeatherForecastItem]) -> LocationForecastViewController {
+    static func controller(forecast: [WeatherForecastItem]) -> LocationForecastViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "LocationForecastViewController") as! LocationForecastViewController
-        controller.forecasts = forecasts
+        controller.forecast = forecast
         return controller
     }
     
@@ -43,12 +43,12 @@ class LocationForecastViewController: UIViewController, UICollectionViewDelegate
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
-        return forecasts != nil ? 1 : 0
+        return forecast != nil ? 1 : 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
      
-        if let _items = forecasts {
+        if let _items = forecast {
             
             return _items.count
         }
@@ -58,7 +58,7 @@ class LocationForecastViewController: UIViewController, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let _items = forecasts, let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LocationForecastCell.reuseId, for: indexPath) as? LocationForecastCell {
+        if let _items = forecast, let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LocationForecastCell.reuseId, for: indexPath) as? LocationForecastCell {
             
             let item = _items[indexPath.item]
             cell.setup(with: item)

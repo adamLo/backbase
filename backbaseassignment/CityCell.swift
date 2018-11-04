@@ -25,12 +25,22 @@ class CityCell: UITableViewCell {
         
         return formatter
     }()
+    
+    override func awakeFromNib() {
+        
+        super.awakeFromNib()
+        
+        nameLabel.font = UIFont.defaultFont(style: .regular, size: .base)
+        lastUpdateLabel.font = UIFont.defaultFont(style: .regular, size: .xSmall)
+        temperatureLabel.font = UIFont.defaultFont(style: .bold, size: .large)
+        conditionsLabel.font = UIFont.defaultFont(style: .regular, size: .small)
+    }
 
     func setup(with city: City) {
         
         nameLabel.text = city.name ?? "N/A"
         
-        var updateText = NSLocalizedString("Last updated: ", comment: "Last update prefix")
+        var updateText = NSLocalizedString("Updated: ", comment: "Last update prefix")
         if let _time = city.lastUpdate {
             let time = Date(timeIntervalSince1970: _time.timeIntervalSince1970)
             updateText += dateFormatter.string(from: time)
